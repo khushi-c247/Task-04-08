@@ -1,17 +1,19 @@
 import { Duplex, getDefaultHighWaterMark } from "stream"
 
 const fs = require ('fs')
+
+//Manually Read and Write data
+
 // const readStream = fs.createReadStream('data.txt' , {highWaterMark: 10})
 // readStream.on('data' , (chunk : string)=>{
-//     console.log(chunk.toString());
-    
-// })
-// readStream.on('end', ()=>
-// {
-//     console.log("File Readed Successfully");
-    
+//     console.log(chunk.toString()); 
 // })
 
+// readStream.on('end', ()=>
+// {
+//    console.log("File Readed Successfully");
+    
+// })
 
 // const writeAndRead = ()=>
 // {
@@ -21,10 +23,12 @@ const fs = require ('fs')
 // }
 
 // writeAndRead()
+
+//Data read and write using Dupelex
 function manipulateData(chunk: String): String {
       return (chunk.toString().toUpperCase());
     }
-    
+
     const readStream = fs.createReadStream('read.txt');
     const writeStream = fs.createWriteStream('write.txt');
     
