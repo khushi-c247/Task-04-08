@@ -39,14 +39,8 @@ function manipulateData(chunk: String): String {
 
 const duplexStream = new Duplex({
       read() {},
-      write(chunk, encoding, callback) {
+      write(chunk) {
       const manipulatedChunk = manipulateData(chunk);
       this.push(manipulatedChunk);
-      callback();
      },
     });
-    const writeStreamDuplex = fs.createWriteStream('write.txt');
-
-duplexStream.pipe(writeStreamDuplex);
-
-fs.createReadStream('read.txt').pipe(duplexStream);
